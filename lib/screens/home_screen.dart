@@ -71,15 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: (){
         if(add){
           // add new text-fields at the top of  textfields
-          productList.insert(0, '');
-          productType.insert(0, '');
-          singleTonList.insert(0, '');
+          productList.insert(index+1, '');
+          productType.insert(index+1, '');
+          singleTonList.insert(index+1, '');
           setState((){});
         }
         else {
-          productList.removeAt(index);
-          productType.removeAt(index);
-          singleTonList.removeAt(index);
+          productList.removeAt(index+1);
+          productType.removeAt(index+1);
+          singleTonList.removeAt(index+1);
           setState((){});
         }
 
@@ -138,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
         if(productSelected[index]=='Singleton') SingleTon(index),
         if(productSelected[index]=='Weight') ..._getWeightProducts(),
         if(productSelected[index]=='Size') ..._getSizeProducts(),
-
       ],
     );
 
@@ -194,15 +193,15 @@ Widget Weight(int index){
     return InkWell(
       onTap: (){
         if(add){
-          weightList.insert(0, '');
-          weightPacking.insert(0, '');
-          weightPrice.insert(0, '');
+          weightList.insert(index+1, '');
+          weightPacking.insert(index+1, '');
+          weightPrice.insert(index+1, '');
           setState((){});
         }
         else {
-          weightList.removeAt(index);
-          weightPacking.removeAt(index);
-          weightPrice.removeAt(index);
+          weightList.removeAt(index+1);
+          weightPacking.removeAt(index+1);
+          weightPrice.removeAt(index+1);
           setState((){});
         }
 
@@ -227,7 +226,7 @@ Widget Weight(int index){
             decoration: textFieldDecoration(hintText: 'Size'),
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Expanded(
           child: TextFormField(
             onChanged: (v) => sizePrice[index] = v,
@@ -261,15 +260,15 @@ Widget Weight(int index){
     return InkWell(
       onTap: (){
         if(add){
-          sizeList.insert(0, '');
-          sizePacking.insert(0, '');
-          sizePrice.insert(0, '');
+          sizeList.insert(index+1, '');
+          sizePacking.insert(index+1, '');
+          sizePrice.insert(index+1, '');
           setState((){});
         }
         else {
-          sizeList.removeAt(index);
-          sizePacking.removeAt(index);
-          sizePrice.removeAt(index);
+          sizeList.removeAt(index+1);
+          sizePacking.removeAt(index+1);
+          sizePrice.removeAt(index+1);
           setState((){});
         }
 
@@ -296,18 +295,18 @@ Widget Weight(int index){
       if( productSelected[i]=='Singleton') 'price': singleTonList[i],
       if(productSelected[i]=='Weight') 'price' :{
         for(int j=0;j<weightList.length;j++){
-          weightPacking[i]:weightPrice[i]
+          weightPacking[j]:weightPrice[j]
         }
       },
       if(productSelected[i]=='Size') 'price' :{
-        for(int j=0;j<sizeList.length;j++){
-          sizePacking[i]:sizePrice[i]
+        for(int k=0;k<sizeList.length;k++){
+          sizePacking[k]:sizePrice[k]
         }
       }
     });
     print(map);
     //post api hit
-    Repo().postProduct(context, map);
+    // Repo().postProduct(context, map);
   }
 
   }
