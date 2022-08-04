@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 16,),
                 ProductTypeField(i),
                 SizedBox(height: 16,),
-                // we need add button at last friends row
+                // we need add button at last field row
                 _addRemoveButton(i == productList.length-1, i),
               ],
             ),
